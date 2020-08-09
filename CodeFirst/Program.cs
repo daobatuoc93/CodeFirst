@@ -17,19 +17,19 @@ namespace CodeFirst
                 var student = new Student
                 {
                     FirstName = "Nguyen",
-                    LastName = "Van Tai A",
+                    LastName = "Van Tai B",
                     Id = 120,
                     Year = GradeLevel.SecondYear,
-                    ExamScores = new List<int> { 99, 82, 81, 79 },
+                    ExamScores = new List<int> { 91, 82, 81, 79 },
                     Emails = new List<Email> {
                     new Email
                     {
-                        EmailAdress = "nguyenvantai@123456",
+                        EmailAdress = "nguyenvantaiB@123456",
                         EmailId=1,
                     },
                     new Email
                     {
-                        EmailAdress = "nguyenvantai@199341",
+                        EmailAdress = "nguyenvantaiB@199341",
                         EmailId=1,
                     },
                     }
