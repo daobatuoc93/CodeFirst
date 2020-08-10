@@ -7,13 +7,13 @@ namespace CodeFirst.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddManytoManyCompanies : IMigrationMetadata
+    public sealed partial class AddnewDataWithContactandAccount : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddManytoManyCompanies));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddnewDataWithContactandAccount));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008090830563_AddManytoManyCompanies"; }
+            get { return "202008091813385_AddnewDataWithContactandAccount"; }
         }
         
         string IMigrationMetadata.Source

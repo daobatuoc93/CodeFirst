@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.Entity;
 namespace CodeFirst
 {
     class Program
@@ -14,30 +15,77 @@ namespace CodeFirst
         {
             using (var db = new StudentContext())
             {
-                var student = new Student
+                db.Database.Initialize(force: false);
+                var studentA = new Student
                 {
                     FirstName = "Nguyen",
-                    LastName = "Van Tai B",
+                    LastName = "Van C",
                     Id = 120,
                     Year = GradeLevel.SecondYear,
                     ExamScores = new List<int> { 91, 82, 81, 79 },
                     Emails = new List<Email> {
-                    new Email
-                    {
-                        EmailAdress = "nguyenvantaiB@123456",
-                        EmailId=1,
+                        new Email { EmailAdress = "nguyenvanC@gmail.com", EmailId = 1, },
+                        new Email { EmailAdress = "nguyenvanC@icloud.com", EmailId = 2, },
                     },
-                    new Email
-                    {
-                        EmailAdress = "nguyenvantaiB@199341",
-                        EmailId=1,
-                    },
-                    }
-
+                    Subjects = new List<StudentSubject>()
                 };
-                
-                db.Students.Add(student);
+                var studentB = new Student
+                {
+                    FirstName = "Nguyen",
+                    LastName = "Van D",
+                    Id = 121,
+                    Year = GradeLevel.SecondYear,
+                    ExamScores = new List<int> { 15, 20, 25, 30 },
+                    Emails = new List<Email> {
+                        new Email { EmailAdress = "nguyenvanD@gmail.com", EmailId = 3, },
+                        new Email { EmailAdress = "nguyenvanD@icloud.com", EmailId = 4, },
+                    },
+                    Subjects = new List<StudentSubject>()
+                };
+                var Math = new Subject { NameSubject = "Math", Students = new List<StudentSubject>() };
+                var Literature = new Subject { NameSubject = "Literature", Students = new List<StudentSubject>() };
+                var Chemistry = new Subject { NameSubject = "Chemistry", Students = new List<StudentSubject>() };
+
+                studentA.Subjects.Add(new StudentSubject { Score = 9, DateExam = new DateTime(2020, 05, 20), Result = "Pass", Subjects = Math });
+                studentA.Subjects.Add(new StudentSubject { Score = 7, DateExam = new DateTime(2020, 05, 21, 10, 30, 50), Result = "Pass", Subjects = Literature });
+                studentA.Subjects.Add(new StudentSubject { Score = 6, DateExam = new DateTime(2020, 05, 21, 13, 30, 50), Result = "Pass", Subjects = Chemistry });
+                Math.Students.Add(new StudentSubject { Score = 4, DateExam = new DateTime(2020, 05, 20), Result = "Fail", Students = studentB, });
+                Literature.Students.Add(new StudentSubject { Score = 3, DateExam = new DateTime(2020, 05, 21, 10, 30, 50), Result = "Fail", Students = studentB });
+                Chemistry.Students.Add(new StudentSubject { Score = 8, DateExam = new DateTime(2020, 05, 21, 13, 30, 50), Result = "Pass", Students = studentB });
+                var AccountA = new Account
+                {
+                    UserName = "nguyenvanA12345",
+                    Password = "123456qwe"
+                    
+                };
+                var ContactA = new Contact { Address = "Ho Chi Minh", PhoneNumber = "0965432132"};
+                studentA.Accounts = AccountA;
+                studentA.Contacts = ContactA;
+                var AccountB = new Account
+                {
+                    UserName = "nguyenvanB1990",
+                    Password = "123456qew",
+                    Students = studentB
+                };
+                var ContactB = new Contact { Address = "Quang Nam"  , PhoneNumber = "0904218411" ,Students = studentB };
+                studentB.Accounts = AccountB;
+                studentB.Contacts = ContactB;
+
+                db.Students.Add(studentA);
+                db.Students.Add(studentB);
                 db.SaveChanges();
+                Console.WriteLine("Quering Student  to see Pass or Fail......");
+                foreach(var student in db.Students)
+                {
+                    Console.WriteLine("Student " + student.LastName + "is");
+                   
+                        foreach (var que in student.Subjects)
+                    {
+                        
+                        Console.WriteLine(que.Result);
+                    }
+                }
+                Console.ReadKey();
             }
         }
     }

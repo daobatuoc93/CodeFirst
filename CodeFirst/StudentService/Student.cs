@@ -29,28 +29,62 @@ namespace CodeFirst.StudentService
         public GradeLevel Year;
         public List<int> ExamScores { get; set; }
         //public virtual List<Student> Students { get; set; }
+        //1-n
         public virtual List<Email> Emails { get; set; }
-        public virtual ICollection<SubjectCourse> Subjects { get; set; }
+        //n-n
+        public virtual ICollection<StudentSubject> Subjects { get; set; }
+        //1-1
+        public virtual Contact Contacts { get; set; }
+        public virtual Account Accounts { get; set; }
         #endregion
     }
-    public class SubjectCourse
+    public class Account
     {
+        //The ForeignKey need to have same name with property at virtual Student for Lazy loading 
+        [ForeignKey("Students")]
         public long Id { get; set; }
-        public string NameCompany { get; set; }
-        public virtual ICollection<Student> Students { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public virtual Student Students { get; set; }
+    }
+    public class Contact
+    {
+        //1-1
+        [ForeignKey("Students")]
+        public long Id { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Url { get; set; }
+        public virtual Student Students { get; set; }
+    }
+    public class Subject
+    {
+        //n-n
+        public long Id { get; set; }
+        public string NameSubject { get; set; }
+        public virtual ICollection<StudentSubject> Students { get; set; }
+    }
+    public class StudentSubject
+    {
+        //payload
+        public long Id { get; set; }
+        public int Score { get; set; }
+        public DateTime DateExam { get; set; }
+        public string Result { get; set; }
+        public Student Students { get; set; }
+        public Subject Subjects { get; set; }
     }
     public class Email
     {
+        //1-n
         public long EmailId { get; set; }
         public string EmailAdress { get; set; }
         public Student Student { get; set; }
-
     }
     public class User
     {
         [Key]
-        public string Username { get; set; }
-        
+        public string Username { get; set; }        
         public string DisplayName { get; set; }
     }
 }

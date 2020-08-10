@@ -193,17 +193,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\GradeLevel.cs" />
-    <Compile Include="Migrations\202008070522198_RecoverEmails.cs" />
-    <Compile Include="Migrations\202008070522198_RecoverEmails.designer.cs">
-      <DependentUpon>202008070522198_RecoverEmails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008071814499_AddDataAnotationAttribute.cs" />
-    <Compile Include="Migrations\202008071814499_AddDataAnotationAttribute.designer.cs">
-      <DependentUpon>202008071814499_AddDataAnotationAttribute.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008071817172_StudentSchemaTable.cs" />
-    <Compile Include="Migrations\202008071817172_StudentSchemaTable.designer.cs">
-      <DependentUpon>202008071817172_StudentSchemaTable.cs</DependentUpon>
+    <Compile Include="Migrations\202008091813385_AddnewDataWithContactandAccount.cs" />
+    <Compile Include="Migrations\202008091813385_AddnewDataWithContactandAccount.designer.cs">
+      <DependentUpon>202008091813385_AddnewDataWithContactandAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -218,14 +210,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008070522198_RecoverEmails.resx">
-      <DependentUpon>202008070522198_RecoverEmails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008071814499_AddDataAnotationAttribute.resx">
-      <DependentUpon>202008071814499_AddDataAnotationAttribute.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008071817172_StudentSchemaTable.resx">
-      <DependentUpon>202008071817172_StudentSchemaTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008091813385_AddnewDataWithContactandAccount.resx">
+      <DependentUpon>202008091813385_AddnewDataWithContactandAccount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
