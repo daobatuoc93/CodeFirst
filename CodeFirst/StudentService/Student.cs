@@ -37,6 +37,9 @@ namespace CodeFirst.StudentService
         public virtual Contact Contacts { get; set; }
         public virtual Account Accounts { get; set; }
         public Address Address { get; set; }
+        //Using to splitting Photo to BLOB 
+        public byte[] Photo { get; set; }
+        public byte[] CurriculumVitae { get; set; }
         #endregion
     }
 }

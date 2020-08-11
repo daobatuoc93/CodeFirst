@@ -4,7 +4,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace CodeFirst.StudentService
 {
     public class StudentContext : DbContext
@@ -24,7 +23,8 @@ namespace CodeFirst.StudentService
         //public DbSet<StudentSubject> StudentSubjects { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           
+            //If want to splitting Data Photo
+            modelBuilder.Configurations.Add(new BuddyConfigClass.StudentMap());
             //add many to many 
             //modelBuilder.Entity<Student>()
             //    .HasMany(p => p.Subjects)
@@ -50,6 +50,17 @@ namespace CodeFirst.StudentService
             modelBuilder.Entity<Student>()
                  .ToTable("Student").HasRequired(x => x.Accounts).WithRequiredPrincipal(x => x.Students);
             modelBuilder.Entity<Account>().ToTable("Student");
+            //If not use buddy class: use below function
+            //modelBuilder.ComplexType<Address>()
+            //     .Property(p => p.State)
+            //     .HasColumnName("State")
+            //     .HasMaxLength(40);
+
+            //modelBuilder.ComplexType<Address>()
+            //     .Property(p => p.City)
+            //     .HasColumnName("City");
+
+
         }
     }
 

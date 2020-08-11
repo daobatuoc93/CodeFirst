@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data.Entity;
+using System.IO;
+
 namespace CodeFirst
 {
     class Program
@@ -15,7 +17,7 @@ namespace CodeFirst
         {
             using (var db = new StudentContext())
             {
-                db.Database.Initialize(force: false);
+                db.Database.Initialize(force: true);
                 var studentA = new Student
                 {
                     FirstName = "Nguyen",
@@ -40,7 +42,9 @@ namespace CodeFirst
                         new Email { EmailAdress = "nguyenvanD@gmail.com", EmailId = 3, },
                         new Email { EmailAdress = "nguyenvanD@icloud.com", EmailId = 4, },
                     },
-                    Subjects = new List<StudentSubject>()
+                    Photo = File.ReadAllBytes("C:\\Users\\EMBED\\Pictures\\DSC_02110.jpg"),
+                    Subjects = new List<StudentSubject>(),
+                    
                 };
                 var Math = new Subject { NameSubject = "Math", Students = new List<StudentSubject>() };
                 var Literature = new Subject { NameSubject = "Literature", Students = new List<StudentSubject>() };
@@ -58,7 +62,15 @@ namespace CodeFirst
                     Password = "123456ewq"
                     
                 };
+                var AddressStudentA = new Address { State = "Binh thanh", Street = "Dang thuy tram", Zip = "700000" };
+                var AddressStudentB = new Address { State = "Tam ky", Street = "nguyen van troi", Zip = "330000" };
+                var PhotoA = File.ReadAllBytes("F:\\DB First\\Self\\CodeFirst\\CodeFirst\\CodeFirst\\ComfortGirl.jpg");
                 var ContactA = new Contact { Address = "Ho Chi Minh", PhoneNumber = "0965432132"};
+                var Schoole = new School { Address = AddressStudentA, NameSchool = "Dong hoi Highshool" };
+                db.Schools.Add(Schoole);
+                studentA.Address = AddressStudentA;
+                studentB.Address = AddressStudentB;
+                studentA.Photo = PhotoA;
                 studentA.Accounts = AccountA;
                 studentA.Contacts = ContactA;
                 var AccountB = new Account
@@ -87,6 +99,13 @@ namespace CodeFirst
                 }
                 Console.ReadKey();
             }
+            //Using this clause to see pictures student A
+            //using (var context = new StudentContext())
+            //{
+            //    var studentA = context.Students.FirstOrDefault();
+            //    File.WriteAllBytes("temp.jpg", studentA.Photo);
+            //    System.Diagnostics.Process.Start("temp.jpg");
+            //}
         }
     }
 }
