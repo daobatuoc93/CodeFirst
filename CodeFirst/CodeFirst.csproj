@@ -201,14 +201,29 @@
     <Compile Include="Migrations\202008110812394__AddNewPartialForAccoutn.designer.cs">
       <DependentUpon>202008110812394__AddNewPartialForAccoutn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008110838513_AddAdressComflexType.cs" />
+    <Compile Include="Migrations\202008110838513_AddAdressComflexType.designer.cs">
+      <DependentUpon>202008110838513_AddAdressComflexType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008110840402_AddAdressComflexType1.cs" />
+    <Compile Include="Migrations\202008110840402_AddAdressComflexType1.designer.cs">
+      <DependentUpon>202008110840402_AddAdressComflexType1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentService\Account.cs" />
+    <Compile Include="StudentService\Address.cs" />
+    <Compile Include="StudentService\Contact.cs" />
+    <Compile Include="StudentService\Email.cs" />
     <Compile Include="StudentService\IStudentService.cs" />
     <Compile Include="StudentService\PartialAccount.cs" />
+    <Compile Include="StudentService\School.cs" />
     <Compile Include="StudentService\Student.cs" />
     <Compile Include="StudentService\StudentContext.cs" />
     <Compile Include="StudentService\StudentService.cs" />
+    <Compile Include="StudentService\StudentSubject.cs" />
+    <Compile Include="StudentService\Subject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -220,6 +235,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008110812394__AddNewPartialForAccoutn.resx">
       <DependentUpon>202008110812394__AddNewPartialForAccoutn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008110838513_AddAdressComflexType.resx">
+      <DependentUpon>202008110838513_AddAdressComflexType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008110840402_AddAdressComflexType1.resx">
+      <DependentUpon>202008110840402_AddAdressComflexType1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

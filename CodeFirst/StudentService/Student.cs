@@ -36,76 +36,9 @@ namespace CodeFirst.StudentService
         //1-1
         public virtual Contact Contacts { get; set; }
         public virtual Account Accounts { get; set; }
+        public Address Address { get; set; }
         #endregion
     }
-    public partial class Account
-    {
-        //The ForeignKey need to have same name with property at virtual Student for Lazy loading 
-        [ForeignKey("Students")]
-        public long Id { get; set; }
-        public string _userName { get; set; }
-        public string _passWord { get; set; }
-        public virtual Student Students { get; set; }
-        partial void OnsettingUserName(string value);
-        partial void OnsettingPassword(string value);
-        public string UserName
-        {
-            get => _userName;
-            set
-            {
-                OnsettingUserName(value);
-                _userName = value;
-            }
-        }
-        public string Password
-        {
-            get => _passWord;
-            set
-            {
-                OnsettingPassword(value);
-                _passWord = value;
-            }
-        }
-    }
-    
-    public class Contact
-    {
-        //1-1
-        [ForeignKey("Students")]
-        public long Id { get; set; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Url { get; set; }
-        public virtual Student Students { get; set; }
-    }
-    public class Subject
-    {
-        //n-n
-        public long Id { get; set; }
-        public string NameSubject { get; set; }
-        public virtual ICollection<StudentSubject> Students { get; set; }
-    }
-    public class StudentSubject
-    {
-        //payload
-        public long Id { get; set; }
-        public int Score { get; set; }
-        public DateTime DateExam { get; set; }
-        public string Result { get; set; }
-        public Student Students { get; set; }
-        public Subject Subjects { get; set; }
-    }
-    public class Email
-    {
-        //1-n
-        public long EmailId { get; set; }
-        public string EmailAdress { get; set; }
-        public Student Student { get; set; }
-    }
-    public class User
-    {
-        [Key]
-        public string Username { get; set; }        
-        public string DisplayName { get; set; }
-    }
 }
+    
+  

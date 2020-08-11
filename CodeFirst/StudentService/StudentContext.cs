@@ -14,21 +14,17 @@ namespace CodeFirst.StudentService
             //Database.SetInitializer<StudentContext>(new CreateDatabaseIfNotExists<StudentContext>());
             var initializer = new DropCreateDatabaseAlways<StudentContext>();
             Database.SetInitializer(initializer);
-
         }
-
         public DbSet<Student> Students { get; set; }
         public DbSet<Email> Emails { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<Subject> SubjectCourses { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<School> Schools { get; set; }
         //public DbSet<StudentSubject> StudentSubjects { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-                .Property(u => u.DisplayName)
-                .HasColumnName("display_name1");
+           
             //add many to many 
             //modelBuilder.Entity<Student>()
             //    .HasMany(p => p.Subjects)
