@@ -3,30 +3,20 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddnewDataWithContactandAccount : DbMigration
+    public partial class ComflexType : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Accounts",
-                c => new
-                    {
-                        Id = c.Long(nullable: false),
-                        UserName = c.String(),
-                        Password = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("main.Student", t => t.Id)
-                .Index(t => t.Id);
-            
-            CreateTable(
-                "main.Student",
+                "dbo.Student",
                 c => new
                     {
                         Student_Id = c.Long(nullable: false, identity: true),
                         first_name = c.String(maxLength: 30),
                         last_name = c.String(maxLength: 30),
                         Fullname = c.String(),
+                        UserName = c.String(),
+                        Password = c.String(),
                     })
                 .PrimaryKey(t => t.Student_Id);
             
@@ -40,7 +30,7 @@
                         Url = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("main.Student", t => t.Id)
+                .ForeignKey("dbo.Student", t => t.Id)
                 .Index(t => t.Id);
             
             CreateTable(
@@ -52,7 +42,7 @@
                         Student_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.EmailId)
-                .ForeignKey("main.Student", t => t.Student_Id)
+                .ForeignKey("dbo.Student", t => t.Student_Id)
                 .Index(t => t.Student_Id);
             
             CreateTable(
@@ -67,7 +57,7 @@
                         Subjects_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("main.Student", t => t.Students_Id)
+                .ForeignKey("dbo.Student", t => t.Students_Id)
                 .ForeignKey("dbo.Subjects", t => t.Subjects_Id)
                 .Index(t => t.Students_Id)
                 .Index(t => t.Subjects_Id);
@@ -95,22 +85,19 @@
         public override void Down()
         {
             DropForeignKey("dbo.StudentSubjects", "Subjects_Id", "dbo.Subjects");
-            DropForeignKey("dbo.StudentSubjects", "Students_Id", "main.Student");
-            DropForeignKey("dbo.Emails", "Student_Id", "main.Student");
-            DropForeignKey("dbo.Contacts", "Id", "main.Student");
-            DropForeignKey("dbo.Accounts", "Id", "main.Student");
+            DropForeignKey("dbo.StudentSubjects", "Students_Id", "dbo.Student");
+            DropForeignKey("dbo.Emails", "Student_Id", "dbo.Student");
+            DropForeignKey("dbo.Contacts", "Id", "dbo.Student");
             DropIndex("dbo.StudentSubjects", new[] { "Subjects_Id" });
             DropIndex("dbo.StudentSubjects", new[] { "Students_Id" });
             DropIndex("dbo.Emails", new[] { "Student_Id" });
             DropIndex("dbo.Contacts", new[] { "Id" });
-            DropIndex("dbo.Accounts", new[] { "Id" });
             DropTable("dbo.Users");
             DropTable("dbo.Subjects");
             DropTable("dbo.StudentSubjects");
             DropTable("dbo.Emails");
             DropTable("dbo.Contacts");
-            DropTable("main.Student");
-            DropTable("dbo.Accounts");
+            DropTable("dbo.Student");
         }
     }
 }

@@ -55,7 +55,7 @@ namespace CodeFirst
                 var AccountA = new Account
                 {
                     UserName = "nguyenvanA12345",
-                    Password = "123456qwe"
+                    Password = "123456ewq"
                     
                 };
                 var ContactA = new Contact { Address = "Ho Chi Minh", PhoneNumber = "0965432132"};

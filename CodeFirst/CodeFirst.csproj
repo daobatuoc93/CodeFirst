@@ -193,14 +193,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\GradeLevel.cs" />
-    <Compile Include="Migrations\202008091813385_AddnewDataWithContactandAccount.cs" />
-    <Compile Include="Migrations\202008091813385_AddnewDataWithContactandAccount.designer.cs">
-      <DependentUpon>202008091813385_AddnewDataWithContactandAccount.cs</DependentUpon>
+    <Compile Include="Migrations\202008110804038_ComflexType.cs" />
+    <Compile Include="Migrations\202008110804038_ComflexType.designer.cs">
+      <DependentUpon>202008110804038_ComflexType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008110812394__AddNewPartialForAccoutn.cs" />
+    <Compile Include="Migrations\202008110812394__AddNewPartialForAccoutn.designer.cs">
+      <DependentUpon>202008110812394__AddNewPartialForAccoutn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentService\IStudentService.cs" />
+    <Compile Include="StudentService\PartialAccount.cs" />
     <Compile Include="StudentService\Student.cs" />
     <Compile Include="StudentService\StudentContext.cs" />
     <Compile Include="StudentService\StudentService.cs" />
@@ -210,8 +215,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008091813385_AddnewDataWithContactandAccount.resx">
-      <DependentUpon>202008091813385_AddnewDataWithContactandAccount.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008110804038_ComflexType.resx">
+      <DependentUpon>202008110804038_ComflexType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008110812394__AddNewPartialForAccoutn.resx">
+      <DependentUpon>202008110812394__AddNewPartialForAccoutn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -52,8 +52,8 @@ namespace CodeFirst.StudentService
                  .HasOptional(p => p.Contacts)
                  .WithRequired(x => x.Students);
             modelBuilder.Entity<Student>()
-                 .HasOptional(p => p.Accounts)
-                 .WithRequired(x => x.Students);
+                 .ToTable("Student").HasRequired(x => x.Accounts).WithRequiredPrincipal(x => x.Students);
+            modelBuilder.Entity<Account>().ToTable("Student");
         }
     }
 

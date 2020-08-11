@@ -7,13 +7,13 @@ namespace CodeFirst.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddnewDataWithContactandAccount : IMigrationMetadata
+    public sealed partial class _AddNewPartialForAccoutn : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddnewDataWithContactandAccount));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_AddNewPartialForAccoutn));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008091813385_AddnewDataWithContactandAccount"; }
+            get { return "202008110812394__AddNewPartialForAccoutn"; }
         }
         
         string IMigrationMetadata.Source
